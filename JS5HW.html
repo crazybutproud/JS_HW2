@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 5 HW Дюндикова</title>
+    <style>
+        .box-1 {
+            border: 3px solid black;
+            background-color: cadetblue;
+            border-radius: 20px;
+            height: fit-content;
+            width: fit-content;
+            padding: 10px;
+        }
+
+        #name {
+            border: 1px solid grey;
+            border-radius: 20px;
+            background-color: rgb(169, 169, 169);
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .first-part,
+        .second-part {
+            border: 5px dotted grey;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        img {
+            height: 250px;
+            width: 350px;
+        }
+
+        .modal {
+            visibility: hidden;
+            z-index: 10;
+            /* Чтобы сделать окно поверх всех элементов */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Полупрозрачный темный фон */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal_open {
+            visibility: visible;
+        }
+
+        .modal_box {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            align-items: center;
+        }
+
+        .modal_info {
+            color: #111;
+            font-size: 16px;
+            margin-bottom: 30px;
+            align-items: center;
+            border-radius: 20px;
+            font-size: large;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        button {
+            border: 2px solid black;
+            border-radius: 20px;
+            height: 40px;
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JS 5 HW Дюндикова</h1>
+
+    <div class="first-part">
+        <div class="box-1">
+            Enter your name: (name cant contain digits) <br>
+            <input id="name" type="text" placeholder="Your name">
+        </div>
+    </div>
+
+    <div class="second-part">
+        <button class="open_modal">Open modal</button>
+
+        <div class="modal">
+            <div class="modal_box">
+                <div class="modal_info">
+                    All cats are beautifull <br>
+                    <img src="https://w-dog.ru/wallpapers/5/16/293857227813431/britanskaya-korotkosh-rstnaya-britanec-kot-koshka-morda.jpg"
+                        alt="cat">
+                </div>
+                <button class="close_modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // решение первой части домашки
+        let inputName = document.getElementById('name');
+        inputName.addEventListener('keydown', checkIfNumber);
+        function checkIfNumber(event) {
+            if (!isNaN(parseFloat(event.key)) && isFinite(event.key)) {
+                event.preventDefault();
+            }
+        };
+
+        // считываем данные для второй части домашки
+        const body = document.body;
+        const open_modal = body.querySelector('open_modal');
+        const close_modal = body.querySelector('close_modal');
+        const modal = body.querySelector('modal');
+        // обработчики клика для кнопки
+
+        open_modal.addEventListener('click',openModal);
+        close_modal.addEventListener('click',closeModal);
+
+        function openModal() {
+            modal.addClass('modal_open');
+            //$('modal').addClass('modal--open');
+        }
+
+        function closeModal() {
+            modal.removeClass('modal_open');
+            //$('modal').removeClass('modal--open');
+        }
+    </script>
+</body>
+
+</html>
